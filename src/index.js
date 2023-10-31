@@ -3,19 +3,21 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Search from './SideCompunemt/Search';
-import Layout from './SideCompunemt/Layout';
-import ShowDetails from './SideCompunemt/ShowDetails';
+import Search from './Compunemt/Search';
+import Layout from './Compunemt/Layout';
+import ShowDetails from './Compunemt/ShowDetails';
+import Seasons from './Compunemt/Seasons';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <React.StrictMode>  
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Search />} />
+          {/* <Route index element={<Search />} /> */}
           <Route path="search" element={<Search />} />
           <Route path="shows/:id" element={<ShowDetails />} />
+          <Route path="shows/:id/seasons" element={<Seasons />} />
           {/* <Route path="blogs" element={<Blogs />} />
           <Route path="contact" element={<Contact />} />
           <Route path="*" element={<NoPage />} /> */}

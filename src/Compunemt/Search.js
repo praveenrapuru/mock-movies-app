@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom"
-
+import { useOutletContext } from "react-router-dom";
 
 const Search = () => {
-    const [searchTerm, setSearchTerm] = useState('');
+  const [searchValue] = useOutletContext();
+    // const [searchTerm, setSearchTerm] = useState('');
     const [result, setResult] = useState([]);
     const [chunkedShows, setChunkedShow] = useState([]);
 
     // const location = useLocation();
     // const navigate = useNavigate();
 
-    const handleInputChange = (event) => {
-        setSearchTerm(event.target.value);
-    };
+    // const handleInputChange = (event) => {
+    //     setSearchTerm(event.target.value);
+    // };
 
     const fetchUseData = (searchString) => {
   
@@ -50,24 +51,28 @@ const Search = () => {
     //     // debugger
     // }, [location.searchTerm]);
 
+    useEffect(() => {
+      fetchUseData(searchValue);
+    }, [searchValue]);
 
-    const handleSearch = () => {
-        // navigate('?p=${searchTerm}');
-        fetchUseData(searchTerm);
-    }
+
+    // const handleSearch = () => {
+    //     // navigate('?p=${searchTerm}');
+    //     fetchUseData(searchTerm);
+    // }
     return (
         <div className='row'>
           <div className='col-1 sidenev'>
     
           </div>
           <div className='col-11'>
-            <input
+            {/* <input
               type="text"
               placeholder="Search..."
               value={searchTerm}
               onChange={handleInputChange}
             />
-            <button onClick={handleSearch}>Search</button>
+            <button class="btn btn-outline-warning" onClick={handleSearch}>Search</button> */}
             {chunkedShows.map((shows) => (
               <div className='row'>
                 {shows.map((post) => (
